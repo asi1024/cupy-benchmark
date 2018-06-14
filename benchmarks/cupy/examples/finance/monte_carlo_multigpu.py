@@ -6,8 +6,8 @@ import time
 import cupy
 import numpy
 
-from black_scholes import black_scholes_kernel
-from monte_carlo import monte_carlo_kernel
+from .black_scholes import black_scholes_kernel
+from .monte_carlo import monte_carlo_kernel
 
 # CuPy also implements a feature to call kernels in different GPUs.
 # Through this sample, we will explain how to allocate arrays

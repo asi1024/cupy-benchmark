@@ -7,9 +7,9 @@ import os
 import cupy as cp
 import numpy as np
 
-from utils import benchmark
-from utils import load_kernel
-from utils import read_code
+from .utils import benchmark
+from .utils import load_kernel
+from .utils import read_code
 
 
 sgemm_file = os.path.join(os.path.dirname(__file__), 'sgemm.cu')
