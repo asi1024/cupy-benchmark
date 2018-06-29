@@ -1,4 +1,4 @@
-from benchmarks.numpy.common import Benchmark
+from benchmarks import BenchmarkBase
 from benchmarks.utils import sync
 from benchmarks.utils.helper import parameterize
 
@@ -10,7 +10,7 @@ from .monte_carlo import compute_option_prices, monte_carlo_kernel
 
 @sync
 @parameterize([('n_options', [1, 10000000])])
-class BlackScholes(Benchmark):
+class BlackScholes(BenchmarkBase):
     def setup(self, n_options):
         def rand_range(m, M):
             samples = cupy.random.rand(n_options)
@@ -36,7 +36,7 @@ class BlackScholes(Benchmark):
 @parameterize([('n_options', [1, 1000]),
                ('n_samples_per_thread', [1, 1000]),
                ('n_threads_per_option', [1, 100000])])
-class MonteCarlo(Benchmark):
+class MonteCarlo(BenchmarkBase):
     def setup(
             self, n_options, n_samples_per_thread, n_threads_per_option):
         def rand_range(m, M):
@@ -61,7 +61,7 @@ class MonteCarlo(Benchmark):
                ('n_options', [1, 1000]),
                ('n_samples_per_thread', [1, 1000]),
                ('n_threads_per_option', [1, 10000])])
-class MonteCarloMultiGPU(Benchmark):
+class MonteCarloMultiGPU(BenchmarkBase):
     def setup(
             self, gpus, n_options, n_samples_per_thread, n_threads_per_option):
         def rand_range(m, M):

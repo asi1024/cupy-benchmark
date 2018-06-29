@@ -1,4 +1,4 @@
-from benchmarks.numpy.common import Benchmark
+from benchmarks import BenchmarkBase
 from benchmarks.utils import sync
 from benchmarks.utils.helper import parameterize
 
@@ -11,7 +11,7 @@ from .gmm import train_gmm
 @parameterize([('num', [100, 500000]),
                ('dim', [2]),
                ('max_iter', [30])])
-class GMM(Benchmark):
+class GMM(BenchmarkBase):
     def setup(self, num, dim, max_iter):
         normal = cupy.random.normal
         scale = cupy.ones(dim)

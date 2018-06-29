@@ -1,4 +1,4 @@
-from benchmarks.numpy.common import Benchmark
+from benchmarks import BenchmarkBase
 from benchmarks.utils import sync
 from benchmarks.utils.helper import parameterize
 
@@ -10,7 +10,7 @@ import cupy
 @sync
 @parameterize([('N', [1, 50, 2000]),
                ('max_iter', [5000])])
-class CG(Benchmark):
+class CG(BenchmarkBase):
     def setup(self, N, max_iter):
         low, high = -50, 50
         dtype = cupy.float64

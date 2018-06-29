@@ -1,4 +1,4 @@
-from benchmarks.numpy.common import Benchmark
+from benchmarks import BenchmarkBase
 from benchmarks.utils import sync
 from benchmarks.utils.helper import parameterize
 
@@ -12,7 +12,7 @@ import cupy
 @parameterize([('m', [1, 1500]),
                ('n', [1, 1500]),
                ('k', [1, 3000])])
-class SGEMM(Benchmark):
+class SGEMM(BenchmarkBase):
     def setup(self, m, n, k):
         low, high = -1, 1
         dtype = cupy.float32
